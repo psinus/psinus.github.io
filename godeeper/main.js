@@ -83,8 +83,6 @@ class WsEvent {
         this.crdy -= rect.y;
         this.crdx = this.crdx / scale;
         this.crdy = this.crdy / scale;
-        this.crdx = Math.trunc(this.crdx);
-        this.crdy = Math.trunc(this.crdy);
 //         if(this.crdx > 0){
 // divLog.innerHTML += " "
 //         divLog.innerHTML += (this.crdx).toString();
@@ -94,8 +92,8 @@ class WsEvent {
 //         }
         if (this.kind == 1 || this.kind == 2) {
             exp.WsSetDataEvent(0, this.kind);
-            exp.WsSetDataEvent(1, this.crdx);
-            exp.WsSetDataEvent(2, this.crdy);
+            exp.WsSetDataEvent(1, 100);
+            exp.WsSetDataEvent(2, 200);
             exp.WsSetDataEvent(3, this.btnN);
         }
         else if (this.kind == 3) {
