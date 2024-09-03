@@ -325,6 +325,7 @@ request.onload = function () {
             document.oncontextmenu = () => {
                 return false;
             };
+            ctx.imageSmoothingEnabled = false;
             const maxDimX = 13;
             const maxDimY = 7;
             let sqr = 32 * scale;
