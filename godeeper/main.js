@@ -84,7 +84,10 @@ class WsEvent {
         this.crdx = this.crdx / scale;
         this.crdy = this.crdy / scale;
         if(this.crdx > 0){
+divLog.innerHTML += " "
         divLog.innerHTML += (this.crdx).toString();
+        
+divLog.innerHTML += " "
         divLog.innerHTML += (this.crdy).toString();
         }
         if (this.kind == 1 || this.kind == 2) {
