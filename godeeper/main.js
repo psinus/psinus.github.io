@@ -83,8 +83,8 @@ class WsEvent {
         this.crdy -= rect.y;
         this.crdx = this.crdx / scale;
         this.crdy = this.crdy / scale;
-        divLog.body.innerHTML = (this.crdx).toString();
-        divLog.body.innerHTML += (this.crdy).toString();
+        divLog.innerHTML = (this.crdx).toString();
+        divLog.innerHTML += (this.crdy).toString();
         if (this.kind == 1 || this.kind == 2) {
             exp.WsSetDataEvent(0, this.kind);
             exp.WsSetDataEvent(1, this.crdx);
@@ -169,7 +169,7 @@ let wsEvent = new WsEvent();
         wsEvent.crdx = event.pageX;
         wsEvent.crdy = event.pageY;
         wsEvent.btnN = event.button;
-        divLog.body.innerHTML = "Hello";
+        divLog.innerHTML = "Hello";
         
     });
     document.getElementById('canvas').addEventListener('mouseup', (event) => {
