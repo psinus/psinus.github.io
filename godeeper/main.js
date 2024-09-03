@@ -83,8 +83,10 @@ class WsEvent {
         this.crdy -= rect.y;
         this.crdx = this.crdx / scale;
         this.crdy = this.crdy / scale;
-        divLog.innerHTML = (this.crdx).toString();
+        if(this.crdx > 0){
+        divLog.innerHTML += (this.crdx).toString();
         divLog.innerHTML += (this.crdy).toString();
+        }
         if (this.kind == 1 || this.kind == 2) {
             exp.WsSetDataEvent(0, this.kind);
             exp.WsSetDataEvent(1, this.crdx);
