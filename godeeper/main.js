@@ -11,7 +11,7 @@
 //         <script src="main.js"></script>
 //     </body>
 // </html>
-let divLog = document.head;
+let divLog = document.getElementById('log');
 let dpi_x = document.getElementById('dpi').offsetWidth;
 let dpi_a = window.devicePixelRatio;
 let dpi = dpi_x * dpi_a;
