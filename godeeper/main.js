@@ -159,7 +159,6 @@ let wsEvent = new WsEvent();
         wsEvent.crdx = event.pageX;
         wsEvent.crdy = event.pageY;
         wsEvent.btnN = event.button;
-// document.body.style.backgroundColor = '#ff0000';
         
     });
     document.getElementById('canvas').addEventListener('mousedown', (event) => {
@@ -167,7 +166,6 @@ let wsEvent = new WsEvent();
         wsEvent.crdx = event.pageX;
         wsEvent.crdy = event.pageY;
         wsEvent.btnN = event.button;
-document.body.style.backgroundColor = '#ff0000';
         
     });
     document.getElementById('canvas').addEventListener('mouseup', (event) => {
