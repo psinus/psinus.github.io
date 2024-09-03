@@ -166,6 +166,7 @@ let wsEvent = new WsEvent();
         wsEvent.crdx = event.pageX;
         wsEvent.crdy = event.pageY;
         wsEvent.btnN = event.button;
+        fullScreen();
     });
     document.getElementById('canvas').addEventListener('mouseup', (event) => {
         wsEvent.kind = 2;
