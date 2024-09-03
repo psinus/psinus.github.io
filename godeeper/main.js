@@ -154,6 +154,13 @@ class WsEvent {
 }
 let wsEvent = new WsEvent();
 {
+    canvas.addEventListener('touchstart', (event)=>{
+        wsEvent.kind = 1;
+        wsEvent.crdx = event.pageX;
+        wsEvent.crdy = event.pageY;
+        wsEvent.btnN = event.button;
+        
+    });
     document.getElementById('canvas').addEventListener('mousedown', (event) => {
         wsEvent.kind = 1;
         wsEvent.crdx = event.pageX;
