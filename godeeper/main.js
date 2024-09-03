@@ -325,8 +325,8 @@ request.onload = function () {
             document.oncontextmenu = () => {
                 return false;
             };
-            const maxDimX = 22;
-            const maxDimY = 17;
+            const maxDimX = 13;
+            const maxDimY = 7;
             let sqr = 32 * scale;
             let dimX = window.innerWidth / sqr;
             if (dimX > maxDimX) {
