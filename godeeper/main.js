@@ -184,8 +184,8 @@ let wsEvent = new WsEvent();
     // });
     document.getElementById('canvas').addEventListener('mousemove', (event) => {
         wsEvent.kind = 3;
-        wsEvent.crdx = event.movementX;
-        wsEvent.crdy = event.movementY;
+        wsEvent.crdx = event.offsetX;
+        wsEvent.crdy = event.offsetY;
     });
     // document.getElementById('canvas').addEventListener('dblclick', (event) => {
     //     wsEvent.kind = 4;
@@ -361,7 +361,7 @@ request.onload = function () {
             // client.onmessage = function(ev: MessageEvent){
             //     console.log(ev.data);
             // }
-            exp.WsInitStage1(notScaledCanvas.width, notScaledCanvas.height);
+            exp.WsInitStage1(width, height);
             let lastTime = 0;
             notScaledCtx.font = "12px font1";
             notScaledCtx.textAlign = "left";
