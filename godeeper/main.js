@@ -89,8 +89,8 @@ class WsEvent {
         let crdX = Math.floor(this.crdx);
         let crdY = Math.floor(this.crdy);
          if (this.kind == 1 || this.kind == 2) {
-            arr[0] = crdX;
-            arr[1] = crdY;
+            arr[0] = 500;
+            arr[1] = 300;
             divLog.innerHTML += " "
             divLog.innerHTML += (arr[0]).toString();
             divLog.innerHTML += " "
