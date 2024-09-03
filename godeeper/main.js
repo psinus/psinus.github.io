@@ -182,11 +182,11 @@ let wsEvent = new WsEvent();
     //     wsEvent.crdy = event.pageY;
     //     wsEvent.btnN = event.button;
     // });
-    // document.getElementById('canvas').addEventListener('mousemove', (event) => {
-    //     wsEvent.kind = 3;
-    //     wsEvent.crdx = event.pageX;
-    //     wsEvent.crdy = event.pageY;
-    // });
+    document.getElementById('canvas').addEventListener('mousemove', (event) => {
+        wsEvent.kind = 3;
+        wsEvent.crdx = event.movementX;
+        wsEvent.crdy = event.movementY;
+    });
     // document.getElementById('canvas').addEventListener('dblclick', (event) => {
     //     wsEvent.kind = 4;
     //     wsEvent.crdx = event.pageX;
