@@ -81,8 +81,10 @@ class WsEvent {
         let rect = canvas.getBoundingClientRect();
         this.crdx -= rect.x;
         this.crdy -= rect.y;
-        this.crdx = this.crdx ;
-        this.crdy = this.crdy ;
+        this.crdx = this.crdx / scale;
+        this.crdy = this.crdy / scale;
+        this.crdx = Math.trunc(this.crdx);
+        this.crdy = Math.trunc(this.crdy);
 //         if(this.crdx > 0){
 // divLog.innerHTML += " "
 //         divLog.innerHTML += (this.crdx).toString();
