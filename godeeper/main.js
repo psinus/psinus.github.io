@@ -19,6 +19,7 @@ let dpi = dpi_x * dpi_a;
 document.body.style.backgroundColor = '#ffffff';
 const _scale1 = 96;
 const scale = dpi / _scale1;
+divLog.innerHTML = "dpi: " + dpi.toString() + ", scale: " + scale.toString();
 let font1 = new FontFace("Sans Mono", "asset/game/droid_sans_mono.ttf");
 document.fonts.add(font1);
 let images = new Map();
@@ -361,7 +362,7 @@ request.onload = function () {
             // client.onmessage = function(ev: MessageEvent){
             //     console.log(ev.data);
             // }
-            exp.WsInitStage1(width, height);
+            exp.WsInitStage1(notScaledCanvas.width, notScaledCanvas.height);
             let lastTime = 0;
             notScaledCtx.font = "12px font1";
             notScaledCtx.textAlign = "left";
