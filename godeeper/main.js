@@ -92,8 +92,8 @@ class WsEvent {
 //         }
         if (this.kind == 1 || this.kind == 2) {
             exp.WsSetDataEvent(0, this.kind);
-            exp.WsSetDataEvent(1, 100);
-            exp.WsSetDataEvent(2, 200);
+            exp.WsSetDataEvent(1, this.crdx);
+            exp.WsSetDataEvent(2, this.crdy);
             exp.WsSetDataEvent(3, this.btnN);
         }
         else if (this.kind == 3) {
