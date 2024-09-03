@@ -83,13 +83,13 @@ class WsEvent {
         this.crdy -= rect.y;
         this.crdx = this.crdx / scale;
         this.crdy = this.crdy / scale;
-        if(this.crdx > 0){
-divLog.innerHTML += " "
-        divLog.innerHTML += (this.crdx).toString();
+//         if(this.crdx > 0){
+// divLog.innerHTML += " "
+//         divLog.innerHTML += (this.crdx).toString();
         
-divLog.innerHTML += " "
-        divLog.innerHTML += (this.crdy).toString();
-        }
+// divLog.innerHTML += " "
+//         divLog.innerHTML += (this.crdy).toString();
+//         }
         if (this.kind == 1 || this.kind == 2) {
             exp.WsSetDataEvent(0, this.kind);
             exp.WsSetDataEvent(1, this.crdx);
@@ -174,7 +174,7 @@ let wsEvent = new WsEvent();
         wsEvent.crdx = event.pageX;
         wsEvent.crdy = event.pageY;
         wsEvent.btnN = event.button;
-        divLog.innerHTML = "Hello";
+        // divLog.innerHTML = "Hello";
         
     });
     document.getElementById('canvas').addEventListener('mouseup', (event) => {
@@ -218,6 +218,7 @@ request.onload = function () {
             },
             JsPrint: function (s) {
                 let text = new TextDecoder().decode(data);
+                divLog.innerHTML = text;
                 console.log(text);
             },
             JsAlloc: function (size) {
