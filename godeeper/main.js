@@ -59,6 +59,10 @@ request.open("GET", "game.wasm");
 request.responseType = 'arraybuffer';
 request.send();
 let countAwait = 0;
+
+let arr = new Uint32Array();
+
+
 class WsEvent {
     constructor() {
         this.kind = 0;
@@ -83,6 +87,8 @@ class WsEvent {
         this.crdy -= rect.y;
         this.crdx = this.crdx / scale;
         this.crdy = this.crdy / scale;
+        arr[0] = this.crdx;
+        arr[1] = this.crdy;
 //         if(this.crdx > 0){
 // divLog.innerHTML += " "
 //         divLog.innerHTML += (this.crdx).toString();
@@ -92,8 +98,8 @@ class WsEvent {
 //         }
         if (this.kind == 1 || this.kind == 2) {
             exp.WsSetDataEvent(0, this.kind);
-            exp.WsSetDataEvent(1, 100);
-            exp.WsSetDataEvent(2, 200);
+            exp.WsSetDataEvent(1, arr[0]);
+            exp.WsSetDataEvent(2, arr[1]);
             exp.WsSetDataEvent(3, this.btnN);
         }
         else if (this.kind == 3) {
