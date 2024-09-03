@@ -17,7 +17,7 @@ let dpi_a = window.devicePixelRatio;
 let dpi = dpi_x * dpi_a;
 // console.log("DPI: ", dpi);
 document.body.style.backgroundColor = '#ffffff';
-const _scale1 = 124;
+const _scale1 = 96;
 const scale = dpi / _scale1;
 let font1 = new FontFace("Sans Mono", "asset/game/droid_sans_mono.ttf");
 document.fonts.add(font1);
@@ -83,6 +83,8 @@ class WsEvent {
         this.crdy -= rect.y;
         this.crdx = this.crdx / scale;
         this.crdy = this.crdy / scale;
+        let crdX = Math.floor(this.crdx);
+        let crdY = Math.floor(this.crdy);
 //         if(this.crdx > 0){
 // divLog.innerHTML += " "
 //         divLog.innerHTML += (this.crdx).toString();
@@ -92,8 +94,8 @@ class WsEvent {
 //         }
         if (this.kind == 1 || this.kind == 2) {
             exp.WsSetDataEvent(0, this.kind);
-            exp.WsSetDataEvent(1, this.crdx);
-            exp.WsSetDataEvent(2, this.crdy);
+            exp.WsSetDataEvent(1, crdX);
+            exp.WsSetDataEvent(2, crdY);
             exp.WsSetDataEvent(3, this.btnN);
         }
         else if (this.kind == 3) {
