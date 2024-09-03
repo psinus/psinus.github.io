@@ -31,6 +31,7 @@ var center = function () {
     canvas.style.marginLeft = (window.innerWidth - canvas.offsetWidth) / 2 + 'px';
 };
 window.addEventListener('resize', center);
+
 function fullScreen() {
     var body = document.body;
     if (body.requestFullscreen) {
@@ -59,6 +60,8 @@ request.open("GET", "game.wasm");
 request.responseType = 'arraybuffer';
 request.send();
 let countAwait = 0;
+
+let arr = new Uint32Array(2);
 class WsEvent {
     constructor() {
         this.kind = 0;
@@ -85,17 +88,16 @@ class WsEvent {
         this.crdy = this.crdy / scale;
         let crdX = Math.floor(this.crdx);
         let crdY = Math.floor(this.crdy);
-        if(this.crdx > 0){
-divLog.innerHTML += " "
-        divLog.innerHTML += (crdX).toString();
-        
-divLog.innerHTML += " "
-        divLog.innerHTML += (crdY).toString();
-        }
-        if (this.kind == 1 || this.kind == 2) {
+         if (this.kind == 1 || this.kind == 2) {
+            arr[0] = crdX;
+            arr[1] = crdY;
+            divLog.innerHTML += " "
+            divLog.innerHTML += (arr[0]).toString();
+            divLog.innerHTML += " "
+            divLog.innerHTML += (arr[1]).toString();
             exp.WsSetDataEvent(0, this.kind);
-            exp.WsSetDataEvent(1, crdX);
-            exp.WsSetDataEvent(2, crdY);
+            exp.WsSetDataEvent(1, arr[0]);
+            exp.WsSetDataEvent(2, arr[1]);
             exp.WsSetDataEvent(3, this.btnN);
         }
         else if (this.kind == 3) {
