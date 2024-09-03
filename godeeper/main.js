@@ -80,9 +80,9 @@ class WsEvent {
         this.keyMode.ctrl = 0;
     }
     send(exp) {
-        let rect = canvas.getBoundingClientRect();
-        this.crdx -= rect.x;
-        this.crdy -= rect.y;
+        // let rect = canvas.getBoundingClientRect();
+        // this.crdx -= rect.x;
+        // this.crdy -= rect.y;
         this.crdx = this.crdx / scale;
         this.crdy = this.crdy / scale;
          if (this.kind == 1 || this.kind == 2) {
@@ -170,8 +170,8 @@ let wsEvent = new WsEvent();
     // });
     document.getElementById('canvas').addEventListener('mousedown', (event) => {
         wsEvent.kind = 1;
-        wsEvent.crdx = event.x;
-        wsEvent.crdy = event.y;
+        wsEvent.crdx = event.offsetX;
+        wsEvent.crdy = event.offsetY;
         wsEvent.btnN = event.button;
         // divLog.innerHTML = "Hello";
         
