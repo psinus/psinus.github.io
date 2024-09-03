@@ -11,6 +11,7 @@
 //         <script src="main.js"></script>
 //     </body>
 // </html>
+let divLog = document.createElement('div');
 let dpi_x = document.getElementById('dpi').offsetWidth;
 let dpi_a = window.devicePixelRatio;
 let dpi = dpi_x * dpi_a;
@@ -82,8 +83,8 @@ class WsEvent {
         this.crdy -= rect.y;
         this.crdx = this.crdx / scale;
         this.crdy = this.crdy / scale;
-        document.body.innerHTML = (this.crdx).toString();
-        document.body.innerHTML += (this.crdy).toString();
+        divLog.body.innerHTML = (this.crdx).toString();
+        divLog.body.innerHTML += (this.crdy).toString();
         if (this.kind == 1 || this.kind == 2) {
             exp.WsSetDataEvent(0, this.kind);
             exp.WsSetDataEvent(1, this.crdx);
@@ -168,7 +169,7 @@ let wsEvent = new WsEvent();
         wsEvent.crdx = event.pageX;
         wsEvent.crdy = event.pageY;
         wsEvent.btnN = event.button;
-        document.body.innerHTML = "Hello";
+        divLog.body.innerHTML = "Hello";
         
     });
     document.getElementById('canvas').addEventListener('mouseup', (event) => {
