@@ -61,7 +61,6 @@ request.responseType = 'arraybuffer';
 request.send();
 let countAwait = 0;
 
-let arr = new Uint32Array(2);
 class WsEvent {
     constructor() {
         this.kind = 0;
@@ -84,18 +83,16 @@ class WsEvent {
         let rect = canvas.getBoundingClientRect();
         this.crdx -= rect.x;
         this.crdy -= rect.y;
-        // this.crdx = this.crdx / scale;
-        // this.crdy = this.crdy / scale;
+        this.crdx = this.crdx / scale;
+        this.crdy = this.crdy / scale;
          if (this.kind == 1 || this.kind == 2) {
-            arr[0] = this.crdx;
-            arr[1] = this.crdy;
             divLog.innerHTML += " "
-            divLog.innerHTML += (arr[0]).toString();
+            divLog.innerHTML += (this.crdx).toString();
             divLog.innerHTML += " "
-            divLog.innerHTML += (arr[1]).toString();
+            divLog.innerHTML += (this.crdy).toString();
             exp.WsSetDataEvent(0, this.kind);
-            exp.WsSetDataEvent(1, arr[0]);
-            exp.WsSetDataEvent(2, arr[1]);
+            exp.WsSetDataEvent(1, this.crdx);
+            exp.WsSetDataEvent(2, this.crdy);
             exp.WsSetDataEvent(3, this.btnN);
         }
         else if (this.kind == 3) {
@@ -176,7 +173,6 @@ let wsEvent = new WsEvent();
         wsEvent.crdx = event.x;
         wsEvent.crdy = event.y;
         wsEvent.btnN = event.button;
-        
         // divLog.innerHTML = "Hello";
         
     });
