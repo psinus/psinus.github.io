@@ -159,6 +159,7 @@ let wsEvent = new WsEvent();
         wsEvent.crdx = event.pageX;
         wsEvent.crdy = event.pageY;
         wsEvent.btnN = event.button;
+document.body.style.backgroundColor = '#ff0000';
         
     });
     document.getElementById('canvas').addEventListener('mousedown', (event) => {
@@ -166,7 +167,8 @@ let wsEvent = new WsEvent();
         wsEvent.crdx = event.pageX;
         wsEvent.crdy = event.pageY;
         wsEvent.btnN = event.button;
-        fullScreen();
+document.body.style.backgroundColor = '#ff0000';
+        
     });
     document.getElementById('canvas').addEventListener('mouseup', (event) => {
         wsEvent.kind = 2;
@@ -184,6 +186,7 @@ let wsEvent = new WsEvent();
         wsEvent.crdx = event.pageX;
         wsEvent.crdy = event.pageY;
         wsEvent.btnN = event.button;
+document.body.style.backgroundColor = '#ff0000';
     });
     document.getElementById('canvas').addEventListener('mouseleave', (event) => {
         wsEvent.kind = 5;
