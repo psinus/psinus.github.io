@@ -18,7 +18,7 @@ let dpi = dpi_x * dpi_a;
 // console.log("DPI: ", dpi);
 document.body.style.backgroundColor = '#ffffff';
 const _scale1 = 96;
-const scale = dpi / _scale1;
+const scale = 2;//dpi / _scale1;
 divLog.innerHTML = "dpi: " + dpi.toString() + ", scale: " + scale.toString();
 let font1 = new FontFace("Sans Mono", "asset/game/droid_sans_mono.ttf");
 document.fonts.add(font1);
