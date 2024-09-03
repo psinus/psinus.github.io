@@ -87,10 +87,10 @@ class WsEvent {
         let crdY = Math.floor(this.crdy);
         if(this.crdx > 0){
 divLog.innerHTML += " "
-        divLog.innerHTML += (this.crdx).toString();
+        divLog.innerHTML += (crdX).toString();
         
 divLog.innerHTML += " "
-        divLog.innerHTML += (this.crdy).toString();
+        divLog.innerHTML += (crdY).toString();
         }
         if (this.kind == 1 || this.kind == 2) {
             exp.WsSetDataEvent(0, this.kind);
