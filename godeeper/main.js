@@ -201,6 +201,7 @@ let wsEvent = new WsEvent();
         });
         ctx.font = '48px Arial';
         ctx.fillText("Touch to Start");
+        startGame();
     }else{
         canvas.addEventListener('mousedown', (event) => {
             wsEvent.kind = 1;
