@@ -32,11 +32,14 @@ var center = function () {
     canvas.style.marginLeft = (window.innerWidth - canvas.offsetWidth) / 2 + 'px';
 };
 window.addEventListener('resize', center);
+let box = document.getElementById('box');
+box.style.width = window.outerWidth;
+box.style.height = window.outerHeight;
+
 
 function fullScreen() {
-    var body = document.body;
-    if (body.requestFullscreen) {
-        body.requestFullscreen();
+    if (box.requestFullscreen) {
+        box.requestFullscreen();
     }
     //else if(body.webkitRequestFullscreen){
     //     body.webkitRequestFullscreen();    
