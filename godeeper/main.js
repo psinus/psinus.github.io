@@ -112,7 +112,7 @@ class WsEvent {
         // this.crdy -= rect.y;
         
         if(this.crdx > 0){
-            console.log("1111: ", ratioCanvasUnscaledX, " ", ratioCanvasUnscaledX);
+            console.log("1111: ", canvas.offsetWidth, " ", notScaledCanvas.offsetWidth);
         }
         this.crdx = this.crdx / ratioCanvasUnscaledX;
         this.crdy = this.crdy / ratioCanvasUnscaledY;
