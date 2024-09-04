@@ -57,6 +57,7 @@ function renderPresent() {
         // notScaledCanvas.height = h;
     }
 }
+
 let request = new XMLHttpRequest();
 request.open("GET", "game.wasm");
 request.responseType = 'arraybuffer';
@@ -176,6 +177,7 @@ let wsEvent = new WsEvent();
         wsEvent.crdy = event.offsetY;
         wsEvent.btnN = event.button;
         // divLog.innerHTML = "Hello";
+        navigator.virtualKeyboard.show();
         
     });
     // document.getElementById('canvas').addEventListener('mouseup', (event) => {
