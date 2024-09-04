@@ -178,8 +178,8 @@ let wsEvent = new WsEvent();
 {
     canvas.addEventListener('touchstart', (event)=>{
         wsEvent.kind = 1;
-        wsEvent.crdx = event.offsetX;
-        wsEvent.crdy = event.offsetY;
+        wsEvent.crdx = event.changedTouches[0].screenX;
+        wsEvent.crdy = event.changedTouches[0].screenY;
         wsEvent.btnN = event.button;
         
     });
