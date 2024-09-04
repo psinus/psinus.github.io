@@ -335,6 +335,8 @@ request.onload = function () {
             notScaledCtx.imageSmoothingEnabled = false;   
          const maxDimX = 13;
             const maxDimY = 7;
+            divLog.innerHTML += window.outerWidth.toString() + ", " + window.outerHeight.toString(); 
+                
             let sqr = 32 * scale;
             let dimX = window.outerWidth / sqr;
             if (dimX > maxDimX) {
@@ -344,6 +346,7 @@ request.onload = function () {
             if (dimY > maxDimY) {
                 dimY = maxDimY;
             }
+            divLog.innerHTML += dimX.toString() + ", " + dimY.toString();
             let borderW = 3 * scale;
             const FRAME_RATE = 50;
             let width = (dimX * sqr + (2 * borderW));
