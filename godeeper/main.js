@@ -66,6 +66,7 @@ function fullScreen() {
     }else if(box.mozRequestFullscreen){
          box.mozRequestFullscreen();
     }
+    screen.orientation.lock('landscape');
 }
 let data = new Uint8Array(1);
 function renderPresent() {
