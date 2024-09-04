@@ -190,9 +190,6 @@ function startMobile(){
         wsEvent.crdy = event.changedTouches[0].clientY - canvas.offsetTop;
     
     });
-
-    fullScreen();
-    screen.orientation.lock('landscape');
 }
 
 
@@ -424,6 +421,10 @@ function startGame(){
                     requestAnimFrame(GameCycle);
                 };
                 GameCycle();
+                if(isMobile){
+                    fullScreen();
+                    screen.orientation.lock('landscape');
+                }
             }
             Main();
         });
