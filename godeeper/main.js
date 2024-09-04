@@ -358,6 +358,10 @@ function startGame(){
                 document.oncontextmenu = () => {
                     return false;
                 };
+                if(isMobile){
+                    fullScreen();
+                    screen.orientation.lock('landscape');
+                }
                 ctx.imageSmoothingEnabled = false;
                 notScaledCtx.imageSmoothingEnabled = false;   
                  const maxDimX = 23;
@@ -421,10 +425,6 @@ function startGame(){
                     requestAnimFrame(GameCycle);
                 };
                 GameCycle();
-                if(isMobile){
-                    fullScreen();
-                    screen.orientation.lock('landscape');
-                }
             }
             Main();
         });
