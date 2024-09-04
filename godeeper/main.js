@@ -61,7 +61,6 @@ function fullScreen() {
     }else if(box.mozRequestFullscreen){
          box.mozRequestFullscreen();
     }
-    // screen.orientation.lock('landscape');
 }
 let data = new Uint8Array(1);
 function renderPresent() {
@@ -168,6 +167,7 @@ let isMobile = false;
 
 function startMobile(){
 
+    screen.orientation.lock('landscape');
     startGame();
     // canvas.removeEventListener('touchstart');
     
