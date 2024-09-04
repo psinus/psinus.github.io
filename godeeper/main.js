@@ -27,14 +27,29 @@ let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 let notScaledCanvas = document.createElement('canvas');
 let notScaledCtx = notScaledCanvas.getContext('2d');
-var center = function () {
-    canvas.style.marginTop = (window.innerHeight - canvas.offsetHeight) / 2 + 'px';
-    canvas.style.marginLeft = (window.innerWidth - canvas.offsetWidth) / 2 + 'px';
-};
-window.addEventListener('resize', center);
+
 let box = document.getElementById('box');
 box.style.width = window.innerWidth;
 box.style.height = window.innerHeight;
+
+var center = function () {
+    canvas.style.marginTop = (window.innerHeight - canvas.offsetHeight) / 2 + 'px';
+    canvas.style.marginLeft = (window.innerWidth - canvas.offsetWidth) / 2 + 'px';
+    let ratioX = box.offsetWidth / canvas.offsetWidth;
+    let ratioY = box.offsetHeight / canvas.offsetHeight;
+
+    if(ratioX < ratioY){
+            canvas.width = canvas.offsetWidth * ratioX;
+            canvas.height = canvas.offsetHeight * ratioX;
+    
+    }else{
+            canvas.width = canvas.offsetWidth * ratioY;
+            canvas.height = canvas.offsetHeight * ratioY;
+    
+    }
+    
+};
+window.addEventListener('resize', center);
 
 
 function fullScreen() {
@@ -47,8 +62,6 @@ function fullScreen() {
     // else if(body.mozRequestFullscreen){
     //     body.mozRequestFullscreen();
     // }
-            canvas.width = box.offsetWidth;
-            canvas.height = box.offsetHeight;
 }
 let data = new Uint8Array(1);
 function renderPresent() {
