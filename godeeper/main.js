@@ -110,8 +110,12 @@ class WsEvent {
         // let rect = canvas.getBoundingClientRect();
         // this.crdx -= rect.x;
         // this.crdy -= rect.y;
+        
         this.crdx = this.crdx / ratioCanvasUnscaledX;
         this.crdy = this.crdy / ratioCanvasUnscaledY;
+        if(this.crdx > 0){
+            console.log(this.crdx, " ", this.crdy);
+        }
          if (this.kind == 1 || this.kind == 2) {
             divLog.innerHTML += " "
             divLog.innerHTML += (this.crdx).toString();
