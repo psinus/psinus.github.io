@@ -9,7 +9,7 @@ let dpi = dpi_x * dpi_a;
 document.body.style.backgroundColor = '#ffffff';
 const _scale1 = 96;
 const scale = dpi / _scale1;
-divLog.innerHTML = "dpi: " + dpi.toString() + ", scale: " + scale.toString();
+// divLog.innerHTML = "dpi: " + dpi.toString() + ", scale: " + scale.toString();
 let font1 = new FontFace("font1", "url(asset/font2.ttf)");
 document.fonts.add(font1);
 let images = new Map();
@@ -374,7 +374,7 @@ function startGame(){
                 if (dimY > maxDimY) {
                     dimY = maxDimY;
                 }else if(dimY < 7){dimY = 7;}
-                divLog.innerHTML += dimX.toString() + ", " + dimY.toString();
+                // divLog.innerHTML += dimX.toString() + ", " + dimY.toString();
                 let borderW = 3 * scale;
                 const FRAME_RATE = 50;
                 let width = (dimX * sqr + (2 * borderW));
