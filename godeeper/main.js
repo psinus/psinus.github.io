@@ -47,6 +47,8 @@ function fullScreen() {
     // else if(body.mozRequestFullscreen){
     //     body.mozRequestFullscreen();
     // }
+            canvas.width = box.style.width;
+            canvas.height = box.style.height;
 }
 let data = new Uint8Array(1);
 function renderPresent() {
@@ -352,19 +354,9 @@ request.onload = function () {
             const FRAME_RATE = 50;
             let width = (dimX * sqr + (2 * borderW));
             let height = (dimY * sqr + (2 * borderW));
-            let ratioX = window.innerWidth / width;
-            let ratioY = window.innerHeight / height;
-            if(ratioX < ratioY){
-                canvas.width = width * ratioX;
-                canvas.height = height * ratioX;
-            }else{
-                canvas.width = width * ratioY;
-                canvas.height = height * ratioY;
-            
-            }
             box.style.backgroundColor = '#ff0000';
-            // canvas.width = width;
-            // canvas.height = height;
+            canvas.width = width;
+            canvas.height = height;
             notScaledCanvas.width = dimX * 32 + (2 * 3);
             notScaledCanvas.height = dimY * 32 + (2 * 3);
 
