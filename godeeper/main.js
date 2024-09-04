@@ -333,19 +333,20 @@ request.onload = function () {
             };
             ctx.imageSmoothingEnabled = false;
             notScaledCtx.imageSmoothingEnabled = false;   
-         const maxDimX = 13;
-            const maxDimY = 7;
+         const maxDimX = 23;
+            const maxDimY = 17;
             divLog.innerHTML += " : " + window.outerWidth.toString() + ", " + window.outerHeight.toString() + " : "; 
                 
             let sqr = 32 * scale;
             let dimX = window.outerWidth / sqr;
             if (dimX > maxDimX) {
                 dimX = maxDimX;
-            }
+            }else if(dimX < 13){dimX = 13;}
+            
             let dimY = window.outerHeight / sqr;
             if (dimY > maxDimY) {
                 dimY = maxDimY;
-            }
+            }else if(dimY < 7){dimY = 7;}
             divLog.innerHTML += dimX.toString() + ", " + dimY.toString();
             let borderW = 3 * scale;
             const FRAME_RATE = 50;
