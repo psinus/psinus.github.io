@@ -192,17 +192,17 @@ let wsEvent = new WsEvent();
         fullScreen();
         
     });
-    // document.getElementById('canvas').addEventListener('mouseup', (event) => {
-    //     wsEvent.kind = 2;
-    //     wsEvent.crdx = event.offsetX;
-    //     wsEvent.crdy = event.offsetY;
-    //     wsEvent.btnN = event.button;
-    // });
-    // document.getElementById('canvas').addEventListener('mousemove', (event) => {
-    //     wsEvent.kind = 3;
-    //     wsEvent.crdx = event.offsetX;
-    //     wsEvent.crdy = event.offsetY;
-    // });
+    document.getElementById('canvas').addEventListener('mouseup', (event) => {
+        wsEvent.kind = 2;
+        wsEvent.crdx = event.offsetX;
+        wsEvent.crdy = event.offsetY;
+        wsEvent.btnN = event.button;
+    });
+    document.getElementById('canvas').addEventListener('mousemove', (event) => {
+        wsEvent.kind = 3;
+        wsEvent.crdx = event.offsetX;
+        wsEvent.crdy = event.offsetY;
+    });
     // document.addEventListener('keydown', (event) => {
     //     wsEvent.kind = 6;
     //     wsEvent.key = event.key;
