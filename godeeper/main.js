@@ -176,38 +176,50 @@ class WsEvent {
 }
 let wsEvent = new WsEvent();
 {
-    canvas.addEventListener('touchstart', (event)=>{
-        wsEvent.kind = 1;
-        wsEvent.crdx = event.changedTouches[0].screenX - canvas.offsetLeft;
-        wsEvent.crdy = event.changedTouches[0].clientY - canvas.offsetTop;
-        wsEvent.btnN = event.button;
+    if('ontouchstart' in document.documentElement){
+        alert('touch');
+        canvas.addEventListener('touchstart', (event)=>{
+            wsEvent.kind = 1;
+            wsEvent.crdx = event.changedTouches[0].screenX - canvas.offsetLeft;
+            wsEvent.crdy = event.changedTouches[0].clientY - canvas.offsetTop;
+            wsEvent.btnN = event.button;
         
-    });
-    // document.getElementById('canvas').addEventListener('mousedown', (event) => {
-    //     wsEvent.kind = 1;
-    //     wsEvent.crdx = event.offsetX;
-    //     wsEvent.crdy = event.offsetY;
-    //     wsEvent.btnN = event.button;
-    //     // divLog.innerHTML = "Hello";
-    //     fullScreen();
+        });
+        canvas.addEventListener('touchend', (event)=>{
+            wsEvent.kind = 2;
+            wsEvent.crdx = event.changedTouches[0].screenX - canvas.offsetLeft;
+            wsEvent.crdy = event.changedTouches[0].clientY - canvas.offsetTop;
+            wsEvent.btnN = event.button;
         
-    // });
-    // document.getElementById('canvas').addEventListener('mouseup', (event) => {
-    //     wsEvent.kind = 2;
-    //     wsEvent.crdx = event.offsetX;
-    //     wsEvent.crdy = event.offsetY;
-    //     wsEvent.btnN = event.button;
-    // });
-    // document.getElementById('canvas').addEventListener('mousemove', (event) => {
-    //     wsEvent.kind = 3;
-    //     wsEvent.crdx = event.offsetX;
-    //     wsEvent.crdy = event.offsetY;
-    // });
-    // document.addEventListener('keydown', (event) => {
-    //     wsEvent.kind = 6;
-    //     wsEvent.key = event.key;
-    //     // console.log(event.code);
-    // });
+        });
+    }else{
+        alert('mouse');
+        canvas.addEventListener('mousedown', (event) => {
+            wsEvent.kind = 1;
+            wsEvent.crdx = event.offsetX;
+            wsEvent.crdy = event.offsetY;
+            wsEvent.btnN = event.button;
+            // divLog.innerHTML = "Hello";
+            fullScreen();
+        
+        });
+        canvas.addEventListener('mouseup', (event) => {
+            wsEvent.kind = 2;
+            wsEvent.crdx = event.offsetX;
+            wsEvent.crdy = event.offsetY;
+            wsEvent.btnN = event.button;
+        });
+        canvas.addEventListener('mousemove', (event) => {
+            wsEvent.kind = 3;
+            wsEvent.crdx = event.offsetX;
+            wsEvent.crdy = event.offsetY;
+        });
+        document.addEventListener('keydown', (event) => {
+            wsEvent.kind = 6;
+            wsEvent.key = event.key;
+            // console.log(event.code);
+        });
+    }
 }
 request.onload = function () {
     let bytes = request.response;
