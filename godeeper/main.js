@@ -167,8 +167,6 @@ let isMobile = false;
 
 function startMobile(){
 
-    fullScreen();
-    screen.orientation.lock('landscape');
     startGame();
     // canvas.removeEventListener('touchstart');
     
@@ -193,6 +191,8 @@ function startMobile(){
     
     });
 
+    fullScreen();
+    screen.orientation.lock('landscape');
 }
 
 
