@@ -10,8 +10,8 @@ document.body.style.backgroundColor = '#ffffff';
 const _scale1 = 96;
 const scale = dpi / _scale1;
 // divLog.innerHTML = "dpi: " + dpi.toString() + ", scale: " + scale.toString();
-let font1 = new FontFace("font1", "url(asset/font2.ttf)");
-document.fonts.add(font1);
+// let font1 = new FontFace("font1", "url(asset/font2.ttf)");
+// document.fonts.add(font1);
 let images = new Map();
 let canvas = document.getElementById('canvas');
 canvas.width = window.innerWidth;
@@ -31,6 +31,7 @@ let ratioCanvasUnscaledX = scale;
 let ratioCanvasUnscaledY = scale;
 
 var center = function () {
+    // screen.orientation.lock('landscape');
     let ratioX = box.offsetWidth / canvas.offsetWidth;
     let ratioY = box.offsetHeight / canvas.offsetHeight;
 
@@ -166,7 +167,7 @@ class WsEvent {
 let isMobile = false;
 
 function startMobile(){
-
+    
     startGame();
     // canvas.removeEventListener('touchstart');
     
@@ -175,6 +176,9 @@ function startMobile(){
         wsEvent.crdx = event.changedTouches[0].screenX - canvas.offsetLeft;
         wsEvent.crdy = event.changedTouches[0].clientY - canvas.offsetTop;
         wsEvent.btnN = event.button;
+        if("virtualKeyboard" in navigator){
+            navigator.virtualKeyboard.show();
+        }
     
     });
     canvas.addEventListener('touchend', (event)=>{
@@ -202,8 +206,11 @@ let wsEvent = new WsEvent();
                 isMobile = true;
             }            
         });
-        ctx.font = '48px Arial';
-        ctx.fillText("Touch to Start");
+        if("virtualKeyboard" in navigator){
+            navigator.virtualKeyboard.overlaysContent = true;
+        }
+        // ctx.font = '48px Arial';
+        // ctx.fillText("Touch to Start");
     }else{
         canvas.addEventListener('mousedown', (event) => {
             wsEvent.kind = 1;
