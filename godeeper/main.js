@@ -177,7 +177,6 @@ class WsEvent {
 let wsEvent = new WsEvent();
 {
     if('ontouchstart' in document.documentElement){
-        alert('touch');
         canvas.addEventListener('touchstart', (event)=>{
             wsEvent.kind = 1;
             wsEvent.crdx = event.changedTouches[0].screenX - canvas.offsetLeft;
@@ -192,8 +191,13 @@ let wsEvent = new WsEvent();
             wsEvent.btnN = event.button;
         
         });
+        canvas.addEventListener('touchmove', (event)=>{
+            wsEvent.kind = 3;
+            wsEvent.crdx = event.changedTouches[0].screenX - canvas.offsetLeft;
+            wsEvent.crdy = event.changedTouches[0].clientY - canvas.offsetTop;
+        
+        });
     }else{
-        alert('mouse');
         canvas.addEventListener('mousedown', (event) => {
             wsEvent.kind = 1;
             wsEvent.crdx = event.offsetX;
@@ -214,12 +218,12 @@ let wsEvent = new WsEvent();
             wsEvent.crdx = event.offsetX;
             wsEvent.crdy = event.offsetY;
         });
-        document.addEventListener('keydown', (event) => {
-            wsEvent.kind = 6;
-            wsEvent.key = event.key;
-            // console.log(event.code);
-        });
     }
+    document.addEventListener('keydown', (event) => {
+        wsEvent.kind = 6;
+        wsEvent.key = event.key;
+        // console.log(event.code);
+    });
 }
 request.onload = function () {
     let bytes = request.response;
