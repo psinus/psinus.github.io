@@ -33,8 +33,6 @@ box.style.width = window.innerWidth;
 box.style.height = window.innerHeight;
 
 var center = function () {
-    canvas.style.marginTop = (window.innerHeight - canvas.offsetHeight) / 2 + 'px';
-    canvas.style.marginLeft = (window.innerWidth - canvas.offsetWidth) / 2 + 'px';
     let ratioX = box.offsetWidth / canvas.offsetWidth;
     let ratioY = box.offsetHeight / canvas.offsetHeight;
 
@@ -47,6 +45,8 @@ var center = function () {
             canvas.height = canvas.offsetHeight * ratioY;
     
     }
+    canvas.style.marginTop = (window.innerHeight - canvas.offsetHeight) / 2 + 'px';
+    canvas.style.marginLeft = (window.innerWidth - canvas.offsetWidth) / 2 + 'px';
     
 };
 window.addEventListener('resize', center);
