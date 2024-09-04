@@ -196,11 +196,12 @@ function startMobile(){
 let wsEvent = new WsEvent();
 {
     if('ontouchstart' in document.documentElement){
-        canvas.addEventListener('touchstart', (event)=>{
-            startMobile();            
-        });
-        ctx.font = '48px Arial';
-        ctx.fillText("Touch to Start");
+        // canvas.addEventListener('touchstart', (event)=>{
+        //     startMobile();            
+        // });
+        // ctx.font = '48px Arial';
+        // ctx.fillText("Touch to Start");
+        // startGame();
         startGame();
     }else{
         canvas.addEventListener('mousedown', (event) => {
