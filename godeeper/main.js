@@ -33,8 +33,8 @@ var center = function () {
 };
 window.addEventListener('resize', center);
 let box = document.getElementById('box');
-box.style.width = window.outerWidth;
-box.style.height = window.outerHeight;
+box.style.width = window.screen.width;
+box.style.height = window.screen.height;
 
 
 function fullScreen() {
@@ -338,12 +338,12 @@ request.onload = function () {
             divLog.innerHTML += " : " + window.outerWidth.toString() + ", " + window.outerHeight.toString() + " : "; 
                 
             let sqr = 32 * scale;
-            let dimX = window.outerWidth / sqr;
+            let dimX = window.screen.width / sqr;
             if (dimX > maxDimX) {
                 dimX = maxDimX;
             }else if(dimX < 13){dimX = 13;}
             
-            let dimY = window.outerHeight / sqr;
+            let dimY = window.screen.height / sqr;
             if (dimY > maxDimY) {
                 dimY = maxDimY;
             }else if(dimY < 7){dimY = 7;}
@@ -352,8 +352,8 @@ request.onload = function () {
             const FRAME_RATE = 50;
             let width = (dimX * sqr + (2 * borderW));
             let height = (dimY * sqr + (2 * borderW));
-            canvas.width = window.outerWidth + 32;
-            canvas.height = window.outerHeight + 128;
+            canvas.width = width;
+            canvas.height = height;
             notScaledCanvas.width = dimX * 32 + (2 * 3);
             notScaledCanvas.height = dimY * 32 + (2 * 3);
             // box.style.width = width;
