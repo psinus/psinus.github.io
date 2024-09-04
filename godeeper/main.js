@@ -16,6 +16,7 @@ let images = new Map();
 let canvas = document.getElementById('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+canvas.style.backgroundColor = '#ff0000';
 let ctx = canvas.getContext('2d');
 
 
@@ -167,7 +168,8 @@ let isMobile = false;
 
 function startMobile(){
 
-    canvas.removeEventListener('touchstart');
+    startGame();
+    // canvas.removeEventListener('touchstart');
     
     canvas.addEventListener('touchstart', (event)=>{
         wsEvent.kind = 1;
@@ -189,7 +191,6 @@ function startMobile(){
         wsEvent.crdy = event.changedTouches[0].clientY - canvas.offsetTop;
     
     });
-    startGame();
 
 }
 
@@ -197,9 +198,11 @@ function startMobile(){
 let wsEvent = new WsEvent();
 {
     if('ontouchstart' in document.documentElement){
-        isMobile = true;
         canvas.addEventListener('touchstart', (event)=>{
-            startMobile();            
+            if(!isMobile){
+                startMobile();
+                isMobile = true;
+            }            
         });
         ctx.font = '48px Arial';
         ctx.fillText("Touch to Start");
