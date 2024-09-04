@@ -199,7 +199,7 @@ let wsEvent = new WsEvent();
         canvas.addEventListener('touchstart', (event)=>{
             startMobile();            
         });
-        ctx.font = '48px serif';
+        ctx.font = '48px Arial';
         ctx.fillText("Touch to Start");
     }else{
         canvas.addEventListener('mousedown', (event) => {
@@ -207,8 +207,6 @@ let wsEvent = new WsEvent();
             wsEvent.crdx = event.offsetX;
             wsEvent.crdy = event.offsetY;
             wsEvent.btnN = event.button;
-            // divLog.innerHTML = "Hello";
-            fullScreen();
         
         });
         canvas.addEventListener('mouseup', (event) => {
