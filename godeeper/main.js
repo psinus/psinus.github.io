@@ -47,8 +47,8 @@ function fullScreen() {
     // else if(body.mozRequestFullscreen){
     //     body.mozRequestFullscreen();
     // }
-            canvas.width = box.style.width;
-            canvas.height = box.style.height;
+            canvas.width = box.offsetWidth;
+            canvas.height = box.offsetHeight;
 }
 let data = new Uint8Array(1);
 function renderPresent() {
