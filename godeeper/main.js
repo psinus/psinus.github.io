@@ -177,7 +177,7 @@ let wsEvent = new WsEvent();
         wsEvent.crdy = event.offsetY;
         wsEvent.btnN = event.button;
         // divLog.innerHTML = "Hello";
-        canvas.focus();
+        fullScreen();
         
     });
     // document.getElementById('canvas').addEventListener('mouseup', (event) => {
