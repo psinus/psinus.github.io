@@ -338,12 +338,12 @@ request.onload = function () {
             divLog.innerHTML += " : " + window.screen.width.toString() + ", " + window.screen.height.toString() + " : "; 
                 
             let sqr = 32 * scale;
-            let dimX = window.innerWidth / sqr;
+            let dimX = Math.floor(window.innerWidth / sqr);
             if (dimX > maxDimX) {
                 dimX = maxDimX;
             }else if(dimX < 13){dimX = 13;}
             
-            let dimY = window.innerHeight / sqr;
+            let dimY = Math.floor(window.innerHeight / sqr);
             if (dimY > maxDimY) {
                 dimY = maxDimY;
             }else if(dimY < 7){dimY = 7;}
@@ -352,8 +352,8 @@ request.onload = function () {
             const FRAME_RATE = 50;
             let width = (dimX * sqr + (2 * borderW));
             let height = (dimY * sqr + (2 * borderW));
-            let ratioX = box.style.width / width;
-            let ratioY = box.style.height / height;
+            let ratioX = window.innerWidth / width;
+            let ratioY = window.innerHeight / height;
             if(ratioX < ratioY){
                 canvas.width = width * ratioX;
                 canvas.height = height * ratioX;
