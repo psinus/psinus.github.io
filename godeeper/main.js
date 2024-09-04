@@ -335,7 +335,7 @@ request.onload = function () {
             notScaledCtx.imageSmoothingEnabled = false;   
          const maxDimX = 23;
             const maxDimY = 17;
-            divLog.innerHTML += " : " + window.outerWidth.toString() + ", " + window.outerHeight.toString() + " : "; 
+            divLog.innerHTML += " : " + window.screen.width.toString() + ", " + window.screen.height.toString() + " : "; 
                 
             let sqr = 32 * scale;
             let dimX = window.screen.width / sqr;
