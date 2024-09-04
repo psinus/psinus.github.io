@@ -352,12 +352,22 @@ request.onload = function () {
             const FRAME_RATE = 50;
             let width = (dimX * sqr + (2 * borderW));
             let height = (dimY * sqr + (2 * borderW));
-            canvas.width = width;
-            canvas.height = height;
+            let ratioX = box.style.width / width;
+            let ratioY = box.style.height / height;
+            if(ratioX < ratioY){
+                canvas.width = width * ratioX;
+                canvas.height = height * ratioX;
+            }else{
+                canvas.width = width * ratioY;
+                canvas.height = height * ratioY;
+            
+            }
+            // canvas.width = width;
+            // canvas.height = height;
             notScaledCanvas.width = dimX * 32 + (2 * 3);
             notScaledCanvas.height = dimY * 32 + (2 * 3);
-            // box.style.width = width;
-            // box.style.height = height;
+
+            
             let requestAnimFrame = (function () {
                 return window.requestAnimationFrame ||
                     window.webkitRequestAnimationFrame ||
