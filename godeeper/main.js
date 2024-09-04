@@ -14,6 +14,8 @@ let font1 = new FontFace("font1", "url(asset/font2.ttf)");
 document.fonts.add(font1);
 let images = new Map();
 let canvas = document.getElementById('canvas');
+canvas.width = document.body.offsetWidth;
+canvas.height = document.body.offsetHeight;
 let ctx = canvas.getContext('2d');
 
 
