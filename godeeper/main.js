@@ -336,11 +336,11 @@ request.onload = function () {
          const maxDimX = 13;
             const maxDimY = 7;
             let sqr = 32 * scale;
-            let dimX = window.innerWidth / sqr;
+            let dimX = window.outerWidth / sqr;
             if (dimX > maxDimX) {
                 dimX = maxDimX;
             }
-            let dimY = window.innerHeight / sqr;
+            let dimY = window.outerHeight / sqr;
             if (dimY > maxDimY) {
                 dimY = maxDimY;
             }
