@@ -352,12 +352,12 @@ request.onload = function () {
             const FRAME_RATE = 50;
             let width = (dimX * sqr + (2 * borderW));
             let height = (dimY * sqr + (2 * borderW));
-            canvas.width = width;
-            canvas.height = height;
+            canvas.width = window.outerWidth;
+            canvas.height = window.outerHeight;
             notScaledCanvas.width = dimX * 32 + (2 * 3);
             notScaledCanvas.height = dimY * 32 + (2 * 3);
-            box.style.width = width;
-            box.style.height = height;
+            // box.style.width = width;
+            // box.style.height = height;
             let requestAnimFrame = (function () {
                 return window.requestAnimationFrame ||
                     window.webkitRequestAnimationFrame ||
