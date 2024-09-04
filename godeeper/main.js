@@ -167,7 +167,6 @@ let isMobile = false;
 
 function startMobile(){
 
-    startGame();
     canvas.removeEventListener('touchstart');
     
     canvas.addEventListener('touchstart', (event)=>{
@@ -190,6 +189,7 @@ function startMobile(){
         wsEvent.crdy = event.changedTouches[0].clientY - canvas.offsetTop;
     
     });
+    startGame();
 
 }
 
