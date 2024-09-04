@@ -14,8 +14,8 @@ let font1 = new FontFace("font1", "url(asset/font2.ttf)");
 document.fonts.add(font1);
 let images = new Map();
 let canvas = document.getElementById('canvas');
-canvas.width = document.body.offsetWidth;
-canvas.height = document.body.offsetHeight;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 let ctx = canvas.getContext('2d');
 
 
@@ -201,8 +201,8 @@ let wsEvent = new WsEvent();
         canvas.addEventListener('touchstart', (event)=>{
             startMobile();            
         });
-        // ctx.font = '48px Arial';
-        // ctx.fillText("Touch to Start");
+        ctx.font = '48px Arial';
+        ctx.fillText("Touch to Start");
     }else{
         canvas.addEventListener('mousedown', (event) => {
             wsEvent.kind = 1;
@@ -359,10 +359,8 @@ function startGame(){
                 };
                 ctx.imageSmoothingEnabled = false;
                 notScaledCtx.imageSmoothingEnabled = false;   
-             const maxDimX = 23;
+                 const maxDimX = 23;
                 const maxDimY = 17;
-                divLog.innerHTML += " : " + window.screen.width.toString() + ", " + window.screen.height.toString() + " : "; 
-                
                 let sqr = 32 * scale;
                 let dimX = Math.floor(window.innerWidth / sqr);
                 if (dimX > maxDimX) {
