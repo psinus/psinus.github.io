@@ -186,6 +186,8 @@ function startMobile(){
         wsEvent.crdy = event.changedTouches[0].clientY - canvas.offsetTop;
     
     });
+
+    startGame();
 }
 
 
@@ -218,6 +220,7 @@ let wsEvent = new WsEvent();
             wsEvent.crdx = event.offsetX;
             wsEvent.crdy = event.offsetY;
         });
+        startGame();
     }
     document.addEventListener('keydown', (event) => {
         wsEvent.kind = 6;
