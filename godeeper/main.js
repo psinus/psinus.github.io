@@ -18,7 +18,7 @@ let dpi = dpi_x * dpi_a;
 // console.log("DPI: ", dpi);
 document.body.style.backgroundColor = '#ffffff';
 const _scale1 = 96;
-const scale = 2;//dpi / _scale1;
+const scale = dpi / _scale1;
 divLog.innerHTML = "dpi: " + dpi.toString() + ", scale: " + scale.toString();
 let font1 = new FontFace("Sans Mono", "asset/game/droid_sans_mono.ttf");
 document.fonts.add(font1);
@@ -33,8 +33,8 @@ var center = function () {
 };
 window.addEventListener('resize', center);
 let box = document.getElementById('box');
-box.style.width = window.screen.width;
-box.style.height = window.screen.height;
+box.style.width = window.innerWidth;
+box.style.height = window.innerHeight;
 
 
 function fullScreen() {
@@ -338,12 +338,12 @@ request.onload = function () {
             divLog.innerHTML += " : " + window.screen.width.toString() + ", " + window.screen.height.toString() + " : "; 
                 
             let sqr = 32 * scale;
-            let dimX = window.screen.width / sqr;
+            let dimX = window.innerWidth / sqr;
             if (dimX > maxDimX) {
                 dimX = maxDimX;
             }else if(dimX < 13){dimX = 13;}
             
-            let dimY = window.screen.height / sqr;
+            let dimY = window.innerHeight / sqr;
             if (dimY > maxDimY) {
                 dimY = maxDimY;
             }else if(dimY < 7){dimY = 7;}
