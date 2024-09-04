@@ -20,7 +20,7 @@ document.body.style.backgroundColor = '#ffffff';
 const _scale1 = 96;
 const scale = dpi / _scale1;
 divLog.innerHTML = "dpi: " + dpi.toString() + ", scale: " + scale.toString();
-let font1 = new FontFace("Sans Mono", "asset/game/droid_sans_mono.ttf");
+let font1 = new FontFace("font1", "url(asset/font2.ttf)");
 document.fonts.add(font1);
 let images = new Map();
 let canvas = document.getElementById('canvas');
@@ -61,24 +61,17 @@ window.addEventListener('resize', center);
 function fullScreen() {
     if (box.requestFullscreen) {
         box.requestFullscreen();
+    }else if(box.webkitRequestFullscreen){
+         box.webkitRequestFullscreen();    
+    }else if(box.mozRequestFullscreen){
+         box.mozRequestFullscreen();
     }
-    //else if(body.webkitRequestFullscreen){
-    //     body.webkitRequestFullscreen();    
-    // }
-    // else if(body.mozRequestFullscreen){
-    //     body.mozRequestFullscreen();
-    // }
 }
 let data = new Uint8Array(1);
 function renderPresent() {
     if (ctx != null) {
-      //   const w = notScaledCanvas.width;
-      //   const h = notScaledCanvas.height;
-      // notScaledCtx.scale(1.1, 1.1);
         ctx.drawImage(notScaledCanvas, 0, 0, notScaledCanvas.width, notScaledCanvas.height, 0, 0, canvas.width, canvas.height);
         ctx.imageSmoothingEnabled = false;
-        // notScaledCanvas.width = w;
-        // notScaledCanvas.height = h;
     }
 }
 
@@ -107,17 +100,14 @@ class WsEvent {
         this.keyMode.ctrl = 0;
     }
     send(exp) {
-        // let rect = canvas.getBoundingClientRect();
-        // this.crdx -= rect.x;
-        // this.crdy -= rect.y;
         
         this.crdx = this.crdx / ratioCanvasUnscaledX;
         this.crdy = this.crdy / ratioCanvasUnscaledY;
          if (this.kind == 1 || this.kind == 2) {
-            divLog.innerHTML += " "
-            divLog.innerHTML += (this.crdx).toString();
-            divLog.innerHTML += " "
-            divLog.innerHTML += (this.crdy).toString();
+            // divLog.innerHTML += " "
+            // divLog.innerHTML += (this.crdx).toString();
+            // divLog.innerHTML += " "
+            // divLog.innerHTML += (this.crdy).toString();
             exp.WsSetDataEvent(0, this.kind);
             exp.WsSetDataEvent(1, this.crdx);
             exp.WsSetDataEvent(2, this.crdy);
@@ -205,36 +195,22 @@ let wsEvent = new WsEvent();
         fullScreen();
         
     });
-    // document.getElementById('canvas').addEventListener('mouseup', (event) => {
-    //     wsEvent.kind = 2;
-    //     wsEvent.crdx = event.pageX;
-    //     wsEvent.crdy = event.pageY;
-    //     wsEvent.btnN = event.button;
-    // });
+    document.getElementById('canvas').addEventListener('mouseup', (event) => {
+        wsEvent.kind = 2;
+        wsEvent.crdx = event.offsetX;
+        wsEvent.crdy = event.offsetY;
+        wsEvent.btnN = event.button;
+    });
     document.getElementById('canvas').addEventListener('mousemove', (event) => {
         wsEvent.kind = 3;
         wsEvent.crdx = event.offsetX;
         wsEvent.crdy = event.offsetY;
     });
-    // document.getElementById('canvas').addEventListener('dblclick', (event) => {
-    //     wsEvent.kind = 4;
-    //     wsEvent.crdx = event.pageX;
-    //     wsEvent.crdy = event.pageY;
-    //     wsEvent.btnN = event.button;
-    // });
-    // document.getElementById('canvas').addEventListener('mouseleave', (event) => {
-    //     wsEvent.kind = 5;
-    // });
-    // document.addEventListener('keydown', (event) => {
-    //     wsEvent.kind = 6;
-    //     wsEvent.key = event.key;
-    //     console.log(event.code);
-    // });
-    // document.addEventListener('keyup', (event) => {
-    //     wsEvent.kind = 7;
-    //     wsEvent.key = event.key;
-    //     console.log(event.code);
-    // });
+    document.addEventListener('keydown', (event) => {
+        wsEvent.kind = 6;
+        wsEvent.key = event.key;
+        // console.log(event.code);
+    });
 }
 request.onload = function () {
     let bytes = request.response;
@@ -374,7 +350,6 @@ request.onload = function () {
             const FRAME_RATE = 50;
             let width = (dimX * sqr + (2 * borderW));
             let height = (dimY * sqr + (2 * borderW));
-            box.style.backgroundColor = '#ff0000';
             canvas.width = width;
             canvas.height = height;
             notScaledCanvas.width = dimX * 32 + (2 * 3);
