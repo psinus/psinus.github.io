@@ -362,6 +362,7 @@ request.onload = function () {
                 canvas.height = height * ratioY;
             
             }
+            box.style.backgroundColor = '#ff0000';
             // canvas.width = width;
             // canvas.height = height;
             notScaledCanvas.width = dimX * 32 + (2 * 3);
