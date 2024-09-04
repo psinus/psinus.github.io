@@ -167,6 +167,7 @@ let isMobile = false;
 
 function startMobile(){
 
+    fullScreen();
     screen.orientation.lock('landscape');
     startGame();
     // canvas.removeEventListener('touchstart');
@@ -422,9 +423,6 @@ function startGame(){
                     }
                     requestAnimFrame(GameCycle);
                 };
-                if(isMobile){
-                    fullScreen();
-                }
                 GameCycle();
             }
             Main();
