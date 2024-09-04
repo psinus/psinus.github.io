@@ -111,11 +111,11 @@ class WsEvent {
         // this.crdx -= rect.x;
         // this.crdy -= rect.y;
         
-        this.crdx = this.crdx / ratioCanvasUnscaledX;
-        this.crdy = this.crdy / ratioCanvasUnscaledY;
         if(this.crdx > 0){
             console.log("1111: ", ratioCanvasUnscaledX, " ", ratioCanvasUnscaledX);
         }
+        this.crdx = this.crdx / ratioCanvasUnscaledX;
+        this.crdy = this.crdy / ratioCanvasUnscaledY;
          if (this.kind == 1 || this.kind == 2) {
             divLog.innerHTML += " "
             divLog.innerHTML += (this.crdx).toString();
