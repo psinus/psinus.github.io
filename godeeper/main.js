@@ -176,33 +176,33 @@ class WsEvent {
 }
 let wsEvent = new WsEvent();
 {
-    // canvas.addEventListener('touchstart', (event)=>{
-    //     wsEvent.kind = 1;
-    //     wsEvent.crdx = event.pageX;
-    //     wsEvent.crdy = event.pageY;
-    //     wsEvent.btnN = event.button;
-        
-    // });
-    document.getElementById('canvas').addEventListener('mousedown', (event) => {
+    canvas.addEventListener('touchstart', (event)=>{
         wsEvent.kind = 1;
         wsEvent.crdx = event.offsetX;
         wsEvent.crdy = event.offsetY;
         wsEvent.btnN = event.button;
-        // divLog.innerHTML = "Hello";
-        fullScreen();
         
     });
-    document.getElementById('canvas').addEventListener('mouseup', (event) => {
-        wsEvent.kind = 2;
-        wsEvent.crdx = event.offsetX;
-        wsEvent.crdy = event.offsetY;
-        wsEvent.btnN = event.button;
-    });
-    document.getElementById('canvas').addEventListener('mousemove', (event) => {
-        wsEvent.kind = 3;
-        wsEvent.crdx = event.offsetX;
-        wsEvent.crdy = event.offsetY;
-    });
+    // document.getElementById('canvas').addEventListener('mousedown', (event) => {
+    //     wsEvent.kind = 1;
+    //     wsEvent.crdx = event.offsetX;
+    //     wsEvent.crdy = event.offsetY;
+    //     wsEvent.btnN = event.button;
+    //     // divLog.innerHTML = "Hello";
+    //     fullScreen();
+        
+    // });
+    // document.getElementById('canvas').addEventListener('mouseup', (event) => {
+    //     wsEvent.kind = 2;
+    //     wsEvent.crdx = event.offsetX;
+    //     wsEvent.crdy = event.offsetY;
+    //     wsEvent.btnN = event.button;
+    // });
+    // document.getElementById('canvas').addEventListener('mousemove', (event) => {
+    //     wsEvent.kind = 3;
+    //     wsEvent.crdx = event.offsetX;
+    //     wsEvent.crdy = event.offsetY;
+    // });
     // document.addEventListener('keydown', (event) => {
     //     wsEvent.kind = 6;
     //     wsEvent.key = event.key;
