@@ -30,15 +30,7 @@ box.style.height = window.innerHeight;
 let ratioCanvasUnscaledX = scale;
 let ratioCanvasUnscaledY = scale;
 
-let isGameStart = false;
-
 var center = function () {
-    screen.orientation.lock('landscape');
-    if(! isGameStart){
-        isGameStart = true;
-        startGame();
-        
-    }
     let ratioX = box.offsetWidth / canvas.offsetWidth;
     let ratioY = box.offsetHeight / canvas.offsetHeight;
 
@@ -175,7 +167,7 @@ let isMobile = false;
 
 function startMobile(){
 
-    fullScreen();
+    startGame();
     // canvas.removeEventListener('touchstart');
     
     canvas.addEventListener('touchstart', (event)=>{
@@ -366,6 +358,10 @@ function startGame(){
                 document.oncontextmenu = () => {
                     return false;
                 };
+                if(isMobile){
+                    fullScreen();
+                   
+                }
                 ctx.imageSmoothingEnabled = false;
                 notScaledCtx.imageSmoothingEnabled = false;   
                  const maxDimX = 23;
@@ -429,23 +425,6 @@ function startGame(){
                     requestAnimFrame(GameCycle);
                 };
                 GameCycle();
-                let ratioX = box.offsetWidth / canvas.offsetWidth;
-                let ratioY = box.offsetHeight / canvas.offsetHeight;
-
-                if(ratioX < ratioY){
-                        canvas.width = canvas.offsetWidth * ratioX;
-                        canvas.height = canvas.offsetHeight * ratioX;
-    
-                }else{
-                        canvas.width = canvas.offsetWidth * ratioY;
-                        canvas.height = canvas.offsetHeight * ratioY;
-    
-                }
-                canvas.style.marginTop = (window.innerHeight - canvas.offsetHeight) / 2 + 'px';
-                canvas.style.marginLeft = (window.innerWidth - canvas.offsetWidth) / 2 + 'px';
-
-                ratioCanvasUnscaledX = canvas.offsetWidth / notScaledCanvas.width;
-                ratioCanvasUnscaledY = canvas.offsetHeight / notScaledCanvas.height;
             }
             Main();
         });
