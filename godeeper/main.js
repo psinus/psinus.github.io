@@ -52,6 +52,7 @@ function renderPresent() {
       //   const h = notScaledCanvas.height;
       // notScaledCtx.scale(1.1, 1.1);
         ctx.drawImage(notScaledCanvas, 0, 0, notScaledCanvas.width, notScaledCanvas.height, 0, 0, canvas.width, canvas.height);
+        ctx.imageSmoothingEnabled = false;
         // notScaledCanvas.width = w;
         // notScaledCanvas.height = h;
     }
