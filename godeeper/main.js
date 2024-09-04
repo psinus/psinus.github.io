@@ -32,6 +32,9 @@ let box = document.getElementById('box');
 box.style.width = window.innerWidth;
 box.style.height = window.innerHeight;
 
+let ratioCanvasUnscaledX = scale;
+let ratioCanvasUnscaledY = scale;
+
 var center = function () {
     let ratioX = box.offsetWidth / canvas.offsetWidth;
     let ratioY = box.offsetHeight / canvas.offsetHeight;
@@ -47,6 +50,9 @@ var center = function () {
     }
     canvas.style.marginTop = (window.innerHeight - canvas.offsetHeight) / 2 + 'px';
     canvas.style.marginLeft = (window.innerWidth - canvas.offsetWidth) / 2 + 'px';
+
+    ratioCanvasUnscaledX = canvas.offsetWidth / notScaledCanvas.offsetWidth;
+    ratioCanvasUnscaledY = canvas.offsetHeight / notScaledCanvas.offsetHeight;
     
 };
 window.addEventListener('resize', center);
@@ -104,8 +110,8 @@ class WsEvent {
         // let rect = canvas.getBoundingClientRect();
         // this.crdx -= rect.x;
         // this.crdy -= rect.y;
-        this.crdx = this.crdx / scale;
-        this.crdy = this.crdy / scale;
+        this.crdx = this.crdx / ratioCanvasUnscaledX;
+        this.crdy = this.crdy / ratioCanvasUnscaledY;
          if (this.kind == 1 || this.kind == 2) {
             divLog.innerHTML += " "
             divLog.innerHTML += (this.crdx).toString();
