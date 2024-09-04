@@ -163,9 +163,11 @@ class WsEvent {
     }
 }
 
+let isMobile = false;
+
 function startMobile(){
 
-    fullScreen();
+    startGame();
     canvas.removeEventListener('touchstart');
     
     canvas.addEventListener('touchstart', (event)=>{
@@ -189,13 +191,13 @@ function startMobile(){
     
     });
 
-    startGame();
 }
 
 
 let wsEvent = new WsEvent();
 {
     if('ontouchstart' in document.documentElement){
+        isMobile = true;
         canvas.addEventListener('touchstart', (event)=>{
             startMobile();            
         });
@@ -419,6 +421,9 @@ function startGame(){
                     }
                     requestAnimFrame(GameCycle);
                 };
+                if(isMobile){
+                    fullScreen();
+                }
                 GameCycle();
             }
             Main();
