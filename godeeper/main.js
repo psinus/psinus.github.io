@@ -51,8 +51,8 @@ var center = function () {
     canvas.style.marginTop = (window.innerHeight - canvas.offsetHeight) / 2 + 'px';
     canvas.style.marginLeft = (window.innerWidth - canvas.offsetWidth) / 2 + 'px';
 
-    ratioCanvasUnscaledX = canvas.offsetWidth / notScaledCanvas.offsetWidth;
-    ratioCanvasUnscaledY = canvas.offsetHeight / notScaledCanvas.offsetHeight;
+    ratioCanvasUnscaledX = canvas.offsetWidth / notScaledCanvas.width;
+    ratioCanvasUnscaledY = canvas.offsetHeight / notScaledCanvas.height;
     
 };
 window.addEventListener('resize', center);
@@ -111,9 +111,6 @@ class WsEvent {
         // this.crdx -= rect.x;
         // this.crdy -= rect.y;
         
-        if(this.crdx > 0){
-            console.log("1111: ", canvas.offsetWidth, " ", notScaledCanvas.offsetWidth);
-        }
         this.crdx = this.crdx / ratioCanvasUnscaledX;
         this.crdy = this.crdy / ratioCanvasUnscaledY;
          if (this.kind == 1 || this.kind == 2) {
