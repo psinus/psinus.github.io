@@ -356,6 +356,8 @@ request.onload = function () {
             canvas.height = height;
             notScaledCanvas.width = dimX * 32 + (2 * 3);
             notScaledCanvas.height = dimY * 32 + (2 * 3);
+            box.style.width = width;
+            box.style.height = height;
             let requestAnimFrame = (function () {
                 return window.requestAnimationFrame ||
                     window.webkitRequestAnimationFrame ||
