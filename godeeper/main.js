@@ -31,6 +31,7 @@ let ratioCanvasUnscaledX = scale;
 let ratioCanvasUnscaledY = scale;
 
 var center = function () {
+    screen.orientation.lock('landscape');
     let ratioX = box.offsetWidth / canvas.offsetWidth;
     let ratioY = box.offsetHeight / canvas.offsetHeight;
 
@@ -360,7 +361,7 @@ function startGame(){
                 };
                 if(isMobile){
                     fullScreen();
-                    screen.orientation.lock('landscape');
+                   
                 }
                 ctx.imageSmoothingEnabled = false;
                 notScaledCtx.imageSmoothingEnabled = false;   
