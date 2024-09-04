@@ -105,10 +105,10 @@ class WsEvent {
         this.crdx = this.crdx / ratioCanvasUnscaledX;
         this.crdy = this.crdy / ratioCanvasUnscaledY;
          if (this.kind == 1 || this.kind == 2) {
-            // divLog.innerHTML += " "
-            // divLog.innerHTML += (this.crdx).toString();
-            // divLog.innerHTML += " "
-            // divLog.innerHTML += (this.crdy).toString();
+            divLog.innerHTML += " "
+            divLog.innerHTML += (this.crdx).toString();
+            divLog.innerHTML += " "
+            divLog.innerHTML += (this.crdy).toString();
             exp.WsSetDataEvent(0, this.kind);
             exp.WsSetDataEvent(1, this.crdx);
             exp.WsSetDataEvent(2, this.crdy);
