@@ -10,14 +10,15 @@ document.body.style.backgroundColor = '#ffffff';
 const _scale1 = 96;
 const scale = dpi / _scale1;
 // divLog.innerHTML = "dpi: " + dpi.toString() + ", scale: " + scale.toString();
-// let font1 = new FontFace("font1", "url(asset/font2.ttf)");
-// document.fonts.add(font1);
+let font1 = new FontFace("font1", "url(asset/font2.ttf)");
+document.fonts.add(font1);
 let images = new Map();
 let canvas = document.getElementById('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 canvas.style.backgroundColor = '#ff0000';
 let ctx = canvas.getContext('2d');
+
 
 
 let notScaledCanvas = document.createElement('canvas');
@@ -167,7 +168,7 @@ class WsEvent {
 let isMobile = false;
 
 function startMobile(){
-    
+
     startGame();
     // canvas.removeEventListener('touchstart');
     
@@ -176,9 +177,6 @@ function startMobile(){
         wsEvent.crdx = event.changedTouches[0].screenX - canvas.offsetLeft;
         wsEvent.crdy = event.changedTouches[0].clientY - canvas.offsetTop;
         wsEvent.btnN = event.button;
-        if("virtualKeyboard" in navigator){
-            navigator.virtualKeyboard.show();
-        }
     
     });
     canvas.addEventListener('touchend', (event)=>{
@@ -206,9 +204,6 @@ let wsEvent = new WsEvent();
                 isMobile = true;
             }            
         });
-        if("virtualKeyboard" in navigator){
-            navigator.virtualKeyboard.overlaysContent = true;
-        }
         // ctx.font = '48px Arial';
         // ctx.fillText("Touch to Start");
     }else{
@@ -239,6 +234,7 @@ let wsEvent = new WsEvent();
     });
 }
 
+let client = null;
 
 
 function startGame(){
@@ -286,6 +282,7 @@ function startGame(){
                     countAwait += 1;
                     image.onload = function () {
                         countAwait -= 1;
+                        
                     };
                 },
                 JsSetImageAlpha: function (idImage, alpha) {
@@ -341,19 +338,22 @@ function startGame(){
                 JsDrawText: function (idFont, idImage, r, g, b, a) {
                     let text = new TextDecoder().decode(data);
                     let image = images[idImage].getContext('2d');
-                    image.font = "12px font1";
+                    image.font = "16px sans-serif";
                     image.textAlign = "left";
                     image.textBaseline = "top";
                     image.globalAlpha = a;
                     image.fillStyle = `rgb(${r}, ${g}, ${b})`;
                     image.fillText(text, 0, 0);
                 },
-                JsGetMillitimeStamp: function () {
-                    let n = Date.now();
-                    console.log(n);
-                    return 123456;
+                JsGetTimestamp: function () {
+                    let n = Date.now() / 1000;
+                    return n;
                 },
-            } }).then(result => {
+                JsClientSend(){
+                    client.send(data.buffer);
+                }
+                
+             } }).then(result => {
             let exp = result.instance.exports;
             const encoder = new TextEncoder();
             const str = encoder.encode("Hello");
@@ -404,30 +404,48 @@ function startGame(){
                             window.setTimeout(callback, 1000 / FRAME_RATE);
                         };
                 })();
-                // let client = new WebSocket('http://127.0.0.1:9224');
-                // client.addEventListener
-                // client.onopen = function(){
-                //     client.send('Hello');
-                // }
-                // client.onmessage = function(ev: MessageEvent){
-                //     console.log(ev.data);
-                // }
+
+                let dataClientRecv = new Array(0);
+                
+                client = new WebSocket('http://127.0.0.1:9000');
+                // client.send(data.buffer);
+                
+                client.addEventListener
+                client.onopen = function(){
+                    // client.send('Hello');
+                }
+                client.onmessage = function(ev){
+                    dataClientRecv.push(new Uint8Array(ev.data));
+                }
+
+                
                 exp.WsInitStage1(notScaledCanvas.width, notScaledCanvas.height);
                 let lastTime = 0;
-                notScaledCtx.font = "12px font1";
+                notScaledCtx.font = "16px sans-serif";
                 notScaledCtx.textAlign = "left";
                 notScaledCtx.textBaseline = "top";
                 center();
                 let GameCycle = () => {
                     if (countAwait == 0) {
                         exp.WsInitStage2();
-                        if (ctx != null) {
-                            ctx.fillStyle = "#000000";
-                            ctx.fillRect(0, 0, width, height);
-                            wsEvent.send(exp);
-                            exp.WsUpdate();
-                            renderPresent();
+
+                        ctx.fillStyle = "#000000";
+                        ctx.fillRect(0, 0, width, height);
+                        wsEvent.send(exp);
+                        exp.WsUpdate();
+
+                        let clientRecv = dataClientRecv.splice(0, dataClientRecv.length);
+                        for(let i = 0; i < clientRecv.length; i++){
+                        
+                            const recv = clientRecv[i];
+                            exp.WsAllocDataClient(recv.length);
+                            for(let i = 0; i < recv.length; i++){
+                                exp.WsSetDataClient(i, recv[i]);
+                            }    
+                            exp.WsClientRecv();
                         }
+                        renderPresent();
+                        
                     }
                     requestAnimFrame(GameCycle);
                 };
