@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html>
+    <head id="head">
+        <meta charset="UTF-8">
+        <meta name="description" content="Imperia game">
+	
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title id="title">
+
+            News
+
+
+        </title>
+        <link rel="stylesheet" type="text/css" href="/style.css">
+        
+    <style>
+        .news-item {
+            display: none;
+            padding: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .page-btn {
+            cursor: pointer;
+            padding: 5px 30px;
+            margin: 0 5px;
+            border: 0px solid #ddd;
+            background: #334455;
+        }
+
+        .page-btn.active {
+            background: #556677;
+            color: white;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsItems = document.querySelectorAll('.news-item');
+            const itemsPerPage = 6;
+            const paginationContainers = document.querySelectorAll('.pagination');
+            // Создаем пагинацию
+            function createPagination() {
+                const totalPages = Math.ceil(newsItems.length / itemsPerPage);
+                // Очищаем пагинацию
+                for(let i = 0; i < paginationContainers.length; i++){
+                    let paginationContainer = paginationContainers[i];
+                    paginationContainer.innerHTML = '';
+        
+                    for (let i = 1; i <= totalPages; i++) {
+                        const pageBtn = document.createElement('button');
+                        pageBtn.className = 'page-btn';
+                        pageBtn.textContent = i;
+                        pageBtn.addEventListener('click', () => showPage(i));
+                        paginationContainer.appendChild(pageBtn);
+                    }
+                }
+                // Показываем первую страницу при загрузке
+                showPage(1);
+            }
+            // Показываем нужную страницу
+            function showPage(pageNumber) {
+                const startIndex = (pageNumber - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+        
+                newsItems.forEach((item, index) => {
+                    item.style.display = (index >= startIndex && index < endIndex) ? 'block' : 'none';
+                });
+        
+                // Обновляем активную кнопку
+                document.querySelectorAll('.page-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.textContent == pageNumber);
+                });
+            }
+            // Создаем пагинацию только если есть больше 6 новостей
+            if (newsItems.length > itemsPerPage) {
+                createPagination();
+            } else {
+                newsItems.forEach(item => item.style.display = 'block');
+            }
+        });
+    </script>
+
+
+    </head>
+    <body>
+        <button class="hamburger">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+        <nav id="menu" class="centered">
+            <a href="/" id="btn-menu">Home</a>
+            <a href="/" id="btn-menu">Wiki</a>
+            <a href="/news/" id="btn-menu">Blog</a>
+        </nav>
+        <div id="content">
+             
+    <div class="pagination"></div>
+    <div id="page"><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div></div>
+    <div class="pagination"></div>
+
+        </div>
+
+        <script src="/script.js"></script>
+    </body>
+</html>

@@ -25,6 +25,7 @@ body {
     width: 100%;
 	  border: 1px solid #ccc;
     max-width: min(600px, 100vw);
+    background-color: #222;
 }
 
 #menu{
@@ -111,4 +112,95 @@ body {
     #content {
         margin-top: 20px;
     }
+}
+
+
+
+.block p {
+  padding-top: 0;
+  font-size: 0.9em;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.block h1 {
+  font-size: 1.17em;
+  position: relative !important;
+  margin: 0 !important;
+  text-align: left;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 2px !important;
+  border: 1px solid #CCC;
+  color: #111;
+  background-color: #CCC;
+}
+
+
+.warning {
+  border-color: #CCCC49 !important;
+}
+
+.warning h1 {
+  border-color: #CCCC49 !important;
+  background-color: #CCCC49 !important;
+}
+
+.block {
+  border: 1px dashed #CCC;
+}
+
+
+.blockCode {
+  border: 1px dashed #CCC;
+}
+
+.block.padded {
+  margin: 10px;
+  border: 1px solid #CCC;
+}
+
+table{
+    background-color: #112233;
+    border: 1px dashed #CCC;
+    font-size: 1.4rem;
+
+}
+table th{
+    border: 1px solid #334455;
+    padding: 0px 5px;
+    
+}
+table td{
+    border: 1px solid #334455;
+    text-align: center;
+    padding: 0px 5px;
+}
+
+
+
+code {
+  font-variant-ligatures: none;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+p>code,
+a>code,
+h1>code,
+h2>code,
+h3>code,
+h4>code,
+h5>code,
+li>code {
+  font-weight: bold;
+  color: #ddd;
+  font-size: 1em;
+}
+
+
+
+.highlight{
+    background-color: #CCCC49;
+    color: #111;
 }

@@ -23,3 +23,6 @@ window.addEventListener('resize', () => {
         navMenu.classList.remove('active');
     }
 });
+
+
+
