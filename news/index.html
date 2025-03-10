@@ -18,75 +18,30 @@
         
     <style>
         .news-item {
-            display: none;
-            padding: 20px;
-            border-bottom: 1px solid #ccc;
+            padding: 5px ;
+
+            margin: 10px 0px;
+            border-bottom: 1px dashed #ccc;
         }
 
-        .pagination {
-            margin-top: 20px;
-            text-align: center;
+ 
+        h3 {
+          color: #CCCCCC !important;
+          background-color: #444444 !important;
+        }
+        a {
+            outline: none;
+            text-decoration: none;
+            padding: 2px 1px 0;
         }
 
-        .page-btn {
-            cursor: pointer;
-            padding: 5px 30px;
-            margin: 0 5px;
-            border: 0px solid #ddd;
-            background: #334455;
+        a:link {
+            color: #265301;
         }
-
-        .page-btn.active {
-            background: #556677;
-            color: white;
+        a:visited {
+            color: #437a16;
         }
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const newsItems = document.querySelectorAll('.news-item');
-            const itemsPerPage = 6;
-            const paginationContainers = document.querySelectorAll('.pagination');
-            // Создаем пагинацию
-            function createPagination() {
-                const totalPages = Math.ceil(newsItems.length / itemsPerPage);
-                // Очищаем пагинацию
-                for(let i = 0; i < paginationContainers.length; i++){
-                    let paginationContainer = paginationContainers[i];
-                    paginationContainer.innerHTML = '';
-        
-                    for (let i = 1; i <= totalPages; i++) {
-                        const pageBtn = document.createElement('button');
-                        pageBtn.className = 'page-btn';
-                        pageBtn.textContent = i;
-                        pageBtn.addEventListener('click', () => showPage(i));
-                        paginationContainer.appendChild(pageBtn);
-                    }
-                }
-                // Показываем первую страницу при загрузке
-                showPage(1);
-            }
-            // Показываем нужную страницу
-            function showPage(pageNumber) {
-                const startIndex = (pageNumber - 1) * itemsPerPage;
-                const endIndex = startIndex + itemsPerPage;
-        
-                newsItems.forEach((item, index) => {
-                    item.style.display = (index >= startIndex && index < endIndex) ? 'block' : 'none';
-                });
-        
-                // Обновляем активную кнопку
-                document.querySelectorAll('.page-btn').forEach(btn => {
-                    btn.classList.toggle('active', btn.textContent == pageNumber);
-                });
-            }
-            // Создаем пагинацию только если есть больше 6 новостей
-            if (newsItems.length > itemsPerPage) {
-                createPagination();
-            } else {
-                newsItems.forEach(item => item.style.display = 'block');
-            }
-        });
-    </script>
 
 
     </head>
@@ -103,9 +58,7 @@
         </nav>
         <div id="content">
              
-    <div class="pagination"></div>
-    <div id="page"><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div></div>
-    <div class="pagination"></div>
+    <div id="page"><div class="news-item "><h3>Some news</h3><p>Some text about news. <a href="/">more</a></p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div><div class="news-item "><p> Some news</p></div></div>
 
         </div>
 
